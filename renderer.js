@@ -1,3 +1,5 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// All of the Node.js APIs are available in this process.
+var cp = require('child_process');
+
+var child = cp.fork(['./asar.js']);
+
+child.on('exit', (code, signal) => console.log("CHILD EXIT: " + code + " / " + signal));
